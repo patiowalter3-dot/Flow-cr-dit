@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vDUmQB2elhT2WlU/vZCEbCvW5jHdzoFEjF+eZBIQQuE=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://skxyhfutydjtrndasado.supabase.co wss://skxyhfutydjtrndasado.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="index, follow">
+<title>Flow Crédits</title>
+<meta name="description" content="Liens Google Flow à 2 500 FCFA. Paiement Mobile Money, livraison instantanée.">
+<meta name="theme-color" content="#0f766e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style>
+
+:root{
+  --bg:#fbf8f3; --surface:#ffffff; --surface-2:#f3eee6; --text:#1c1917; --muted:#6b635b;
+  --line:#e7e0d5; --brand:#0f766e; --brand-ink:#ffffff; --brand-soft:#d6f0ec;
+  --accent:#f59e0b; --accent-soft:#fdf0d5; --danger:#b42318; --danger-soft:#fde7e5;
+  --ok:#11734b; --ok-soft:#dcf5e8; --shadow:0 1px 2px rgba(28,25,23,.05),0 8px 24px rgba(28,25,23,.06);
+  --r:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#13110f; --surface:#1d1a17; --surface-2:#26221e; --text:#f4efe8; --muted:#b0a69a;
+    --line:#35302a; --brand:#2dd4bf; --brand-ink:#062723; --brand-soft:#123a35;
+    --accent:#fbbf24; --accent-soft:#3a2d10; --danger:#f97066; --danger-soft:#3b1714;
+    --ok:#4ade80; --ok-soft:#12301f; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#13110f; --surface:#1d1a17; --surface-2:#26221e; --text:#f4efe8; --muted:#b0a69a;
+  --line:#35302a; --brand:#2dd4bf; --brand-ink:#062723; --brand-soft:#123a35;
+  --accent:#fbbf24; --accent-soft:#3a2d10; --danger:#f97066; --danger-soft:#3b1714;
+  --ok:#4ade80; --ok-soft:#12301f; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:16px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque",Inter,sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.btn{display:inline-flex;text-align:center;line-height:1.25;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;
+  padding:14px 22px;font:600 16px/1 Inter,sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s,opacity .15s}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.btn-main{background:var(--brand);color:var(--brand-ink)}
+.btn-ghost{background:transparent;color:var(--text);border:1.5px solid var(--line)}
+.btn-accent{background:var(--accent);color:#1c1917}
+.btn-wide{width:100%}
+.small{font-size:14px;color:var(--muted)}
+.hidden{display:none!important}
+
+/* En-tête */
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:800 18px "Bricolage Grotesque",sans-serif;text-decoration:none}
+.logo-mark{width:34px;height:34px;border-radius:10px;background:var(--brand);color:var(--brand-ink);
+  display:grid;place-items:center;font-size:16px}
+.top .btn{padding:10px 16px;font-size:14px}
+
+/* Bandeau démo */
+.demo{background:var(--accent-soft);color:var(--text);font-size:14px;text-align:center;padding:10px 16px;border-bottom:1px solid var(--line)}
+
+/* Accueil */
+.hero{padding:48px 0 32px}
+.hero-grid{display:grid;gap:28px}
+.pill{display:inline-flex;gap:8px;align-items:center;background:var(--brand-soft);color:var(--brand);
+  font-weight:600;font-size:13px;padding:6px 12px;border-radius:999px}
+.hero h1{font-size:clamp(34px,8vw,58px);margin:16px 0 14px}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero p.lead{font-size:18px;color:var(--muted);margin:0 0 24px;max-width:520px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:14px;color:var(--muted)}
+.trust span::before{content:"✓ ";color:var(--ok);font-weight:700}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.price-card{padding:24px}
+.price-card .label{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.price{font:800 40px "Bricolage Grotesque",sans-serif;margin:6px 0 2px}
+.price-card ul{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:10px}
+.price-card li{display:flex;gap:10px}
+.price-card li::before{content:"";flex:0 0 20px;height:20px;border-radius:50%;margin-top:2px;
+  background:var(--ok-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.5 2.5L14 7.5' stroke='%2311734b' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
+
+section.block{padding:40px 0}
+section.block h2{font-size:clamp(26px,6vw,38px);margin-bottom:8px}
+section.block .intro{color:var(--muted);margin:0 0 24px}
+.grid{display:grid;gap:14px}
+.feature{padding:20px}
+.feature .ico{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;font-size:20px;margin-bottom:12px}
+.feature h3{font-size:18px;margin-bottom:6px}
+.feature p{margin:0;color:var(--muted);font-size:15px}
+
+.steps{counter-reset:s;display:grid;gap:14px}
+.step{padding:20px 20px 20px 72px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;left:20px;top:20px;width:36px;height:36px;border-radius:50%;
+  background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font:800 16px "Bricolage Grotesque",sans-serif}
+.step h3{font-size:18px;margin-bottom:4px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";font-size:22px;line-height:1;color:var(--brand)}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin:10px 0 0}
+
+.cta{margin:24px 0 48px;padding:32px 24px;text-align:center;background:var(--brand);color:var(--brand-ink);border-radius:24px}
+.cta h2{font-size:clamp(24px,6vw,34px);margin-bottom:10px}
+.cta p{margin:0 0 20px;opacity:.9}
+.cta .btn{background:var(--brand-ink);color:var(--brand)}
+
+footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
+
+/* Formulaires */
+.page{padding:32px 0 56px}
+.auth{max-width:420px;margin:0 auto;padding:24px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--surface-2);border-radius:999px;padding:4px;margin-bottom:22px}
+.tabs button{border:0;background:transparent;padding:10px;border-radius:999px;font:600 15px Inter,sans-serif;color:var(--muted);cursor:pointer}
+.tabs button.on{background:var(--surface);color:var(--text);box-shadow:var(--shadow)}
+label{display:block;font-weight:600;font-size:14px;margin:0 0 6px}
+input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);
+  color:var(--text);font:16px Inter,sans-serif;outline:none}
+input:focus{border-color:var(--brand)}
+.field{margin-bottom:16px}
+.msg{border-radius:12px;padding:12px 14px;font-size:15px;margin:0 0 16px}
+.msg.err{background:var(--danger-soft);color:var(--danger)}
+.msg.ok{background:var(--ok-soft);color:var(--ok)}
+.linkbtn{background:none;border:0;color:var(--brand);font:600 14px Inter,sans-serif;cursor:pointer;padding:0}
+
+/* Espace client */
+.dash{display:grid;gap:16px}
+.hello{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.hello h1{font-size:28px}
+.balance{padding:24px;background:linear-gradient(135deg,var(--brand),color-mix(in srgb,var(--brand) 70%,#000));color:var(--brand-ink);border:0}
+.balance .label{opacity:.85;font-size:14px;font-weight:600}
+.balance .num{font:800 56px/1 "Bricolage Grotesque",sans-serif;margin:8px 0 4px}
+.panel{padding:22px}
+.panel h2{font-size:21px;margin-bottom:6px}
+.panel > p{color:var(--muted);margin:0 0 16px;font-size:15px}
+.recharge-row{display:grid;gap:10px}
+.or{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;margin:16px 0}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.product{display:grid;gap:14px}
+.product .tag{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--accent-soft)}
+.product .tag.ok{background:var(--ok-soft);color:var(--ok)}
+.history{list-style:none;padding:0;margin:0}
+.history li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.history li:last-child{border-bottom:0}
+.history .plus{color:var(--ok);font-weight:600;white-space:nowrap}
+.empty{color:var(--muted);font-size:15px}
+.spinner{display:inline-block;width:18px;height:18px;border:2.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:t .7s linear infinite}
+@keyframes t{to{transform:rotate(360deg)}}
+
+@media (min-width:760px){
+  .hero{padding:72px 0 48px}
+  .hero-grid{grid-template-columns:1.2fr .8fr;align-items:center;gap:48px}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .dash{grid-template-columns:1fr 1fr}
+  .dash .full{grid-column:1/-1}
+  .recharge-row{grid-template-columns:1fr auto}
+}
+
+/* --- Ajouts : stock et liens --- */
+.stock-badge{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-weight:600;font-size:14px;color:var(--text)}
+.stock-badge .dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px var(--ok-soft)}
+.stock-badge.vide .dot{background:var(--danger);box-shadow:0 0 0 4px var(--danger-soft)}
+.linkbox{display:grid;gap:10px;padding:14px;border-radius:12px;background:var(--surface-2);border:1px dashed var(--line);margin-bottom:12px}
+.linkbox code{font:500 14px/1.4 ui-monospace,Menlo,monospace;word-break:break-all;color:var(--text)}
+.linkbox .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.linkbox .btn{padding:11px 14px;font-size:14px}
+.new-link{border:1.5px solid var(--ok);background:var(--ok-soft)}
+textarea{width:100%;min-height:150px;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);
+  color:var(--text);font:14px/1.5 ui-monospace,Menlo,monospace;outline:none;resize:vertical}
+textarea:focus{border-color:var(--brand)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{padding:16px;text-align:center}
+.stat .n{font:800 32px/1 "Bricolage Grotesque",sans-serif}
+.stat .l{font-size:13px;color:var(--muted);margin-top:6px}
+.stat.main{background:var(--brand);color:var(--brand-ink);border:0}
+.stat.main .l{color:var(--brand-ink);opacity:.85}
+.alist{list-style:none;padding:0;margin:0;max-height:420px;overflow:auto}
+.alist li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.alist li:last-child{border-bottom:0}
+.alist .u{word-break:break-all;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+.alist .meta{color:var(--muted);font-size:12px;font-family:Inter,sans-serif}
+.xbtn{flex:0 0 auto;border:1.5px solid var(--line);background:transparent;color:var(--danger);border-radius:999px;padding:6px 12px;font:600 13px Inter,sans-serif;cursor:pointer}
+#nav{display:flex;gap:6px;flex-wrap:nowrap}
+#nav .btn{white-space:nowrap}
+.admin-flag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<div id="demo" class="demo hidden">Mode démonstration : rien n'est encore relié. Essaie un code comme <b>DEMO-1</b>, <b>DEMO-2</b>… et ouvre « Mon stock » en haut.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="logo"><span class="logo-mark">▶</span><span data-cfg="nomSite"></span></a>
+    <div id="nav"></div>
+  </div>
+</header>
+
+<!-- ============ ACCUEIL ============ -->
+<main id="v-accueil">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill">⚡ Livraison instantanée</span>
+        <h1 data-cfg-html="titre"></h1>
+        <p class="lead" data-cfg="slogan"></p>
+        <a href="#inscription" class="btn btn-main">Obtenir mon lien</a>
+        <div><span class="stock-badge hidden" id="stock-badge"><span class="dot"></span><span id="stock-txt"></span></span></div>
+        <div class="trust"><span>Paiement Mobile Money</span><span>Lien reçu en quelques secondes</span><span>Depuis ton téléphone</span></div>
+      </div>
+      <div class="card price-card">
+        <div class="label" data-cfg="nomProduit"></div>
+        <div class="price" data-cfg="prix"></div>
+        <div class="small">par lien · paiement unique</div>
+        <ul id="avantages"></ul>
+        <a href="#inscription" class="btn btn-main btn-wide">J'achète maintenant</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>Ton lien en 3 étapes</h2>
+      <p class="intro">Tout se fait depuis ton téléphone.</p>
+      <div class="steps">
+        <div class="card step"><h3>Crée ton compte</h3><p>Ton email et un mot de passe, c'est tout.</p></div>
+        <div class="card step"><h3>Paie par Mobile Money</h3><p>Paiement sécurisé. Tu reçois un code juste après.</p></div>
+        <div class="card step"><h3>Colle ton code</h3><p>Ton lien s'affiche tout de suite dans ton compte.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>Questions fréquentes</h2>
+      <details><summary>Comment je paie ?</summary><p>Par Mobile Money (MTN, Orange…) sur notre page de paiement sécurisée Chariow.</p></details>
+      <details><summary>Où je trouve mon code ?</summary><p>Il s'affiche juste après le paiement et tu le reçois aussi par email. Copie-le et colle-le dans ton compte.</p></details>
+      <details><summary>Je peux acheter plusieurs liens ?</summary><p>Oui. À chaque paiement, tu reçois un nouveau lien. Tous tes liens restent visibles dans ton compte.</p></details>
+      <details><summary>Et s'il n'y a plus de lien disponible ?</summary><p>Ton code n'est pas perdu. Tu pourras l'utiliser dès que le stock est rechargé, ou nous écrire sur WhatsApp.</p></details>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="cta">
+      <h2>Prêt ?</h2>
+      <p>Crée ton compte, paie et reçois ton lien Google Flow tout de suite.</p>
+      <a href="#inscription" class="btn"><span>Obtenir mon lien — <span data-cfg="prix"></span></span></a>
+    </div>
+  </div>
+</main>
+
+<!-- ============ CONNEXION / INSCRIPTION ============ -->
+<main id="v-auth" class="page hidden">
+  <div class="wrap">
+    <div class="card auth">
+      <div class="tabs" id="tabs">
+        <button type="button" data-tab="inscription">Créer un compte</button>
+        <button type="button" data-tab="connexion">Se connecter</button>
+      </div>
+      <div id="auth-msg"></div>
+      <form id="f-auth" novalidate>
+        <div class="field"><label for="email">Email</label><input id="email" type="email" maxlength="254" autocomplete="email" placeholder="toi@exemple.com" required></div>
+        <div class="field"><label for="pw">Mot de passe</label><input id="pw" type="password" autocomplete="current-password" placeholder="8 caractères minimum" minlength="8" maxlength="72" required></div>
+        <button class="btn btn-main btn-wide" id="b-auth" type="submit">Créer mon compte</button>
+      </form>
+      <p class="small" style="text-align:center;margin:16px 0 0"><button class="linkbtn" id="b-oubli" type="button">Mot de passe oublié ?</button></p>
+    </div>
+  </div>
+</main>
+
+<!-- ============ NOUVEAU MOT DE PASSE ============ -->
+<main id="v-nouveau" class="page hidden">
+  <div class="wrap">
+    <div class="card auth">
+      <h2 style="font-size:24px;margin-bottom:16px">Nouveau mot de passe</h2>
+      <div id="np-msg"></div>
+      <form id="f-np"><div class="field"><label for="np">Nouveau mot de passe</label><input id="np" type="password" autocomplete="new-password" minlength="8" maxlength="72" required></div>
+      <button class="btn btn-main btn-wide" type="submit">Enregistrer</button></form>
+    </div>
+  </div>
+</main>
+
+<!-- ============ ESPACE CLIENT ============ -->
+<main id="v-compte" class="page hidden">
+  <div class="wrap dash">
+    <div class="hello full">
+      <div style="min-width:0"><div class="small">Bonjour 👋</div><h1 id="u-email" style="word-break:break-all"></h1></div>
+      <button class="btn btn-ghost" id="b-out" type="button" style="padding:10px 16px;font-size:14px">Se déconnecter</button>
+    </div>
+
+    <div class="card panel full">
+      <h2>Obtenir un lien</h2>
+      <p>1. Paie par Mobile Money. 2. Colle ici le code reçu.</p>
+      <a class="btn btn-accent btn-wide" id="b-acheter" target="_blank" rel="noopener"><span>Payer (Mobile Money) — <span data-cfg="prix"></span></span></a>
+      <div class="or">puis</div>
+      <div id="r-msg"></div>
+      <div id="r-liens"></div>
+      <form id="f-recharge" class="recharge-row">
+        <input id="code" maxlength="100" placeholder="Colle ton code ici" autocomplete="off" autocapitalize="characters" spellcheck="false">
+        <button class="btn btn-main" id="b-recharge" type="submit">Recevoir mon lien</button>
+      </form>
+    </div>
+
+    <div class="card panel full">
+      <h2>Mes liens</h2>
+      <p class="small" style="margin:0 0 14px">Tous les liens que tu as achetés.</p>
+      <div id="mes-liens"></div>
+    </div>
+  </div>
+</main>
+
+<!-- ============ ESPACE ADMIN : MON STOCK ============ -->
+<main id="v-admin" class="page hidden">
+  <div class="wrap dash">
+    <div class="hello full"><div><div class="admin-flag">Espace privé</div><h1>Mon stock</h1></div></div>
+
+    <div class="stats full">
+      <div class="card stat main"><div class="n" id="a-dispo">–</div><div class="l">liens restants</div></div>
+      <div class="card stat"><div class="n" id="a-donnes">–</div><div class="l">liens vendus</div></div>
+      <div class="card stat"><div class="n" id="a-clients">–</div><div class="l">clients</div></div>
+    </div>
+
+    <div class="card panel full">
+      <h2>Ajouter des liens</h2>
+      <p>Colle tes liens ici, <b>un par ligne</b>. Les doublons sont ignorés.</p>
+      <div id="a-msg"></div>
+      <form id="f-ajout">
+        <textarea id="a-liens" placeholder="https://…lien-1&#10;https://…lien-2&#10;https://…lien-3"></textarea>
+        <div style="height:12px"></div>
+        <button class="btn btn-main btn-wide" id="b-ajout" type="submit">Ajouter au stock</button>
+      </form>
+    </div>
+
+    <div class="card panel">
+      <h2>En stock</h2>
+      <p>Le prochain client reçoit le premier de la liste.</p>
+      <ul class="alist" id="a-liste-dispo"></ul>
+    </div>
+
+    <div class="card panel">
+      <h2>Déjà donnés</h2>
+      <p>À qui et quand.</p>
+      <ul class="alist" id="a-liste-donnes"></ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="annee"></span> <span data-cfg="nomSite"></span> · Service indépendant, non affilié à Google.</span>
+    <a id="wa" target="_blank" rel="noopener">Une question ? WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   RÉGLAGES DU SITE — c'est ici que tu changes tes informations
+   ===================================================================== */
+const CONFIG = {
+  nomSite: "Flow Crédits",
+  titre: "Tes liens <em>Google Flow</em>, livrés en quelques secondes",
+  slogan: "Paie 2 500 FCFA par Mobile Money et reçois ton lien Google Flow directement dans ton compte. Simple, rapide, sécurisé.",
+  nomProduit: "Lien Google Flow",
+  prix: "2 500 FCFA",
+  avantages: ["Un lien personnel, rien que pour toi", "Livraison immédiate après paiement", "Tous tes liens gardés dans ton compte", "Aide par WhatsApp"],
+  // Lien de ton produit "Licence" sur Chariow (bouton Payer)
+  lienAchatChariow: "https://africaservice.mychariow.shop/prd_6u1nl7tb",
+  // Ton numéro WhatsApp avec l'indicatif, sans + ni espaces
+  whatsapp: "237652817569",
+  // Infos Supabase (Project Settings > API). Laisse vide = mode démonstration
+  supabaseUrl: "https://skxyhfutydjtrndasado.supabase.co",
+  supabaseCle: "sb_publishable_Mi6XFzwo-AAOgHTSQrrnSA_ReZNqVHW"
+};
+/* ===================================================================== */
+
+if (window.top !== window.self) { try { window.top.location = window.self.location; } catch(_) { document.documentElement.innerHTML = ""; } }
+const $ = (s) => document.querySelector(s);
+const DEMO = !CONFIG.supabaseUrl || !CONFIG.supabaseCle;
+const sb = DEMO ? null : window.supabase.createClient(CONFIG.supabaseUrl, CONFIG.supabaseCle);
+
+function esc(t){ return String(t ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function msg(zone, texte, type){ $(zone).innerHTML = texte ? `<div class="msg ${type}">${esc(texte)}</div>` : ""; }
+function charge(btn, oui){
+  btn.disabled = oui;
+  if (oui){ btn.dataset.t = btn.innerHTML; btn.innerHTML = '<span class="spinner"></span>'; }
+  else if (btn.dataset.t) btn.innerHTML = btn.dataset.t;
+}
+function dateFr(d){ return new Date(d).toLocaleDateString("fr-FR",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"}); }
+function sur(url){ return /^https:\/\/[^\s"<>]+$/i.test(url) ? url : "#"; }
+
+document.querySelectorAll("[data-cfg]").forEach(el => el.textContent = CONFIG[el.dataset.cfg] || "");
+document.querySelectorAll("[data-cfg-html]").forEach(el => el.innerHTML = CONFIG[el.dataset.cfgHtml] || "");
+$("#avantages").innerHTML = CONFIG.avantages.map(a => `<li>${esc(a)}</li>`).join("");
+document.title = CONFIG.nomSite;
+$("#annee").textContent = new Date().getFullYear();
+$("#wa").href = "https://wa.me/" + CONFIG.whatsapp;
+$("#b-acheter").href = CONFIG.lienAchatChariow;
+if (DEMO) $("#demo").classList.remove("hidden");
+
+/* ---------- Mode démonstration (rien n'est enregistré) ---------- */
+const demo = { user:null, codes:new Set(),
+  stock:[{id:1,lien:"https://exemple.com/invite/AAA111",ajoute_le:new Date()},{id:2,lien:"https://exemple.com/invite/BBB222",ajoute_le:new Date()},{id:3,lien:"https://exemple.com/invite/CCC333",ajoute_le:new Date()}],
+  donnes:[], nextId:4 };
+
+const api = {
+  async session(){
+    if (DEMO) return demo.user;
+    const { data } = await sb.auth.getSession(); return data.session?.user || null;
+  },
+  async inscription(email, pw){
+    if (DEMO){ demo.user = { email }; return { connecte:true }; }
+    const { data, error } = await sb.auth.signUp({ email, password:pw, options:{ emailRedirectTo: location.origin + location.pathname + "#compte" } });
+    if (error) throw error;
+    return { connecte: !!data.session };
+  },
+  async connexion(email, pw){
+    if (DEMO){ demo.user = { email }; return; }
+    const { error } = await sb.auth.signInWithPassword({ email, password:pw });
+    if (error) throw error;
+  },
+  async oubli(email){
+    if (DEMO) return;
+    const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
+    if (error) throw error;
+  },
+  async deconnexion(){ if (DEMO) demo.user = null; else await sb.auth.signOut(); },
+  async stock(){
+    if (DEMO) return demo.stock.length;
+    const { data, error } = await sb.rpc("stock_disponible");
+    return error ? null : data;
+  },
+  async estAdmin(){
+    if (DEMO) return !!demo.user;
+    const { data } = await sb.rpc("est_admin"); return data === true;
+  },
+  async mesLiens(){
+    if (DEMO) return demo.donnes.filter(d => d.email === demo.user?.email);
+    const { data } = await sb.from("stock_liens").select("lien,donne_le").order("donne_le", { ascending:false });
+    return data || [];
+  },
+  async recharger(code){
+    if (DEMO){
+      if (!/^DEMO-\d+$/i.test(code)) return { ok:false, erreur:"Ce code n'existe pas. En démo, essaie DEMO-1, DEMO-2…" };
+      if (demo.codes.has(code.toUpperCase())) return { ok:false, erreur:"Ce code a déjà été utilisé." };
+      if (!demo.stock.length) return { ok:false, rupture:true, erreur:"Plus de lien disponible pour le moment. Ton code n'est PAS perdu : réessaie un peu plus tard ou écris-nous sur WhatsApp." };
+      demo.codes.add(code.toUpperCase());
+      const l = demo.stock.shift();
+      demo.donnes.unshift({ lien:l.lien, email:demo.user.email, code, donne_le:new Date() });
+      return { ok:true, liens:[l.lien] };
+    }
+    const { data, error } = await sb.functions.invoke("recharger", { body:{ code } });
+    if (error){
+      try { return await error.context.json(); } catch(_) { return { ok:false, erreur:"Connexion impossible. Vérifie ton internet." }; }
+    }
+    return data;
+  },
+  async adminResume(){
+    if (DEMO) return { disponibles:demo.stock.length, donnes:demo.donnes.length, clients:new Set(demo.donnes.map(d=>d.email)).size || 1 };
+    const { data, error } = await sb.rpc("admin_resume"); if (error) throw error; return data;
+  },
+  async adminDispo(){
+    if (DEMO) return demo.stock;
+    const { data, error } = await sb.rpc("admin_liens_disponibles"); if (error) throw error; return data || [];
+  },
+  async adminDonnes(){
+    if (DEMO) return demo.donnes;
+    const { data, error } = await sb.rpc("admin_liens_donnes", { p_limite:100 }); if (error) throw error; return data || [];
+  },
+  async adminAjouter(liens){
+    if (DEMO){
+      const deja = new Set([...demo.stock.map(s=>s.lien), ...demo.donnes.map(d=>d.lien)]);
+      let n = 0;
+      [...new Set(liens)].forEach(l => { if (!deja.has(l)){ demo.stock.push({ id:demo.nextId++, lien:l, ajoute_le:new Date() }); n++; } });
+      return n;
+    }
+    const { data, error } = await sb.rpc("admin_ajouter_liens", { p_liens:liens }); if (error) throw error; return data;
+  },
+  async adminSupprimer(id){
+    if (DEMO){ demo.stock = demo.stock.filter(s => s.id !== id); return; }
+    const { error } = await sb.rpc("admin_supprimer_lien", { p_id:id }); if (error) throw error;
+  }
+};
+
+function traduire(e){
+  const m = (e?.message || "").toLowerCase();
+  if (m.includes("invalid login")) return "Email ou mot de passe incorrect.";
+  if (m.includes("already registered") || m.includes("already been registered")) return "Ce compte existe déjà. Connecte-toi.";
+  if (m.includes("password") && (m.includes("6") || m.includes("8") || m.includes("weak") || m.includes("short"))) return "Mot de passe trop faible : au moins 8 caractères, avec des lettres et des chiffres.";
+  if (m.includes("signups not allowed")) return "Les inscriptions sont fermées pour le moment.";
+  if (m.includes("email not confirmed")) return "Confirme d'abord ton email (regarde ta boîte mail).";
+  if (m.includes("rate limit") || m.includes("too many")) return "Trop d'essais. Attends quelques minutes.";
+  if (m.includes("valid email") || m.includes("invalid email")) return "Cet email n'est pas valide.";
+  return e?.message || "Une erreur est survenue. Réessaie.";
+}
+
+async function copier(texte, btn){
+  try { await navigator.clipboard.writeText(texte); }
+  catch(_){
+    const t = document.createElement("textarea"); t.value = texte; document.body.appendChild(t); t.select();
+    try { document.execCommand("copy"); } catch(_){} t.remove();
+  }
+  const avant = btn.textContent; btn.textContent = "Copié ✓"; setTimeout(() => btn.textContent = avant, 1500);
+}
+function boiteLien(lien, nouveau){
+  return `<div class="linkbox ${nouveau ? "new-link" : ""}">
+    <code>${esc(lien)}</code>
+    <div class="row">
+      <button type="button" class="btn btn-ghost" data-copier="${esc(lien)}">Copier</button>
+      <a class="btn btn-main" href="${esc(sur(lien))}" target="_blank" rel="noopener">Ouvrir</a>
+    </div></div>`;
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-copier]"); if (b) copier(b.dataset.copier, b);
+});
+
+/* ---------- Stock affiché sur l'accueil ---------- */
+async function majStock(){
+  const n = await api.stock();
+  if (n === null || n === undefined) return;
+  $("#stock-badge").classList.remove("hidden");
+  $("#stock-badge").classList.toggle("vide", n === 0);
+  $("#stock-txt").textContent = n === 0 ? "Rupture de stock — revient bientôt" : `${n} lien${n>1?"s":""} disponible${n>1?"s":""}`;
+}
+
+/* ---------- Navigation ---------- */
+let ongletAuth = "inscription";
+async function afficher(){
+  const h = (location.hash || "#").replace("#","").split("?")[0];
+  const user = await api.session();
+  const admin = user ? await api.estAdmin() : false;
+  ["#v-accueil","#v-auth","#v-compte","#v-nouveau","#v-admin"].forEach(v => $(v).classList.add("hidden"));
+
+  $("#nav").innerHTML = user
+    ? `${admin ? '<a href="#admin" class="btn btn-ghost">Mon stock</a>' : ""}<a href="#compte" class="btn btn-main">Mon compte</a>`
+    : `<a href="#connexion" class="btn btn-main">Se connecter</a>`;
+
+  window.scrollTo(0,0);
+  if (h === "nouveau-mdp"){ $("#v-nouveau").classList.remove("hidden"); return; }
+  if (h === "admin"){
+    if (!user){ location.hash = "#connexion"; return; }
+    if (!admin){ location.hash = "#compte"; return; }
+    $("#v-admin").classList.remove("hidden"); return remplirAdmin();
+  }
+  if (h === "compte" || ((h === "connexion" || h === "inscription") && user)){
+    if (!user){ location.hash = "#connexion"; return; }
+    if (h !== "compte"){ location.hash = "#compte"; return; }
+    $("#v-compte").classList.remove("hidden"); return remplirCompte(user);
+  }
+  if (h === "connexion" || h === "inscription"){
+    ongletAuth = h; majOnglets(); $("#v-auth").classList.remove("hidden"); return;
+  }
+  $("#v-accueil").classList.remove("hidden");
+  majStock();
+}
+window.addEventListener("hashchange", afficher);
+
+/* ---------- Connexion / inscription ---------- */
+function majOnglets(){
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === ongletAuth));
+  $("#b-auth").textContent = ongletAuth === "inscription" ? "Créer mon compte" : "Me connecter";
+  $("#pw").autocomplete = ongletAuth === "inscription" ? "new-password" : "current-password";
+  msg("#auth-msg","");
+}
+document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { location.hash = "#" + b.dataset.tab; });
+
+$("#f-auth").onsubmit = async (e) => {
+  e.preventDefault();
+  const email = $("#email").value.trim(), pw = $("#pw").value;
+  if (!email || !email.includes("@")) return msg("#auth-msg","Écris ton email.","err");
+  if (pw.length < 8) return msg("#auth-msg","Le mot de passe doit faire au moins 8 caractères.","err");
+  if (pw.length > 72) return msg("#auth-msg","Mot de passe trop long (72 caractères maximum).","err");
+  const b = $("#b-auth"); charge(b,true);
+  try{
+    if (ongletAuth === "inscription"){
+      const r = await api.inscription(email, pw);
+      if (!r.connecte){ charge(b,false); return msg("#auth-msg","Compte créé ! Ouvre l'email qu'on vient de t'envoyer pour le confirmer.","ok"); }
+    } else await api.connexion(email, pw);
+    charge(b,false); location.hash = "#compte"; afficher();
+  }catch(err){ charge(b,false); msg("#auth-msg", traduire(err), "err"); }
+};
+
+$("#b-oubli").onclick = async () => {
+  const email = $("#email").value.trim();
+  if (!email) return msg("#auth-msg","Écris d'abord ton email ci-dessus, puis clique à nouveau.","err");
+  try{ await api.oubli(email); msg("#auth-msg","Si ce compte existe, un email pour changer le mot de passe vient d'être envoyé.","ok"); }
+  catch(err){ msg("#auth-msg", traduire(err), "err"); }
+};
+
+if (sb) sb.auth.onAuthStateChange(evt => { if (evt === "PASSWORD_RECOVERY"){ location.hash = "#nouveau-mdp"; afficher(); } });
+$("#f-np").onsubmit = async (e) => {
+  e.preventDefault();
+  const pw = $("#np").value;
+  if (pw.length < 8) return msg("#np-msg","8 caractères minimum.","err");
+  try{
+    if (sb){ const { error } = await sb.auth.updateUser({ password:pw }); if (error) throw error; }
+    msg("#np-msg","Mot de passe changé !","ok"); setTimeout(() => { location.hash = "#compte"; }, 900);
+  }catch(err){ msg("#np-msg", traduire(err), "err"); }
+};
+
+/* ---------- Espace client ---------- */
+async function remplirCompte(user){
+  $("#u-email").textContent = user.email || "";
+  const liens = await api.mesLiens();
+  $("#mes-liens").innerHTML = liens.length
+    ? liens.map(l => `<div class="small" style="margin-bottom:6px">Reçu le ${esc(dateFr(l.donne_le))}</div>${boiteLien(l.lien)}`).join("")
+    : `<p class="empty">Tu n'as pas encore de lien. Paie puis colle ton code ci-dessus.</p>`;
+}
+
+$("#f-recharge").onsubmit = async (e) => {
+  e.preventDefault();
+  const code = $("#code").value.trim();
+  if (!code) return msg("#r-msg","Colle d'abord ton code.","err");
+  const b = $("#b-recharge"); charge(b,true); msg("#r-msg",""); $("#r-liens").innerHTML = "";
+  const r = await api.recharger(code);
+  charge(b,false);
+  if (r?.ok){
+    $("#code").value = "";
+    msg("#r-msg", r.liens.length > 1 ? `Bravo ! Voici tes ${r.liens.length} liens :` : "Bravo ! Voici ton lien :", "ok");
+    $("#r-liens").innerHTML = r.liens.map(l => boiteLien(l, true)).join("");
+    remplirCompte(await api.session());
+  } else msg("#r-msg", r?.erreur || "Une erreur est survenue.", "err");
+};
+
+/* ---------- Espace admin : Mon stock ---------- */
+async function remplirAdmin(){
+  try{
+    const [res, dispo, donnes] = await Promise.all([api.adminResume(), api.adminDispo(), api.adminDonnes()]);
+    $("#a-dispo").textContent = res.disponibles;
+    $("#a-donnes").textContent = res.donnes;
+    $("#a-clients").textContent = res.clients;
+    $("#a-liste-dispo").innerHTML = dispo.length
+      ? dispo.map((d,i) => `<li><span><span class="u">${esc(d.lien)}</span><br><span class="meta">${i===0 ? "➜ Le prochain à partir · " : ""}ajouté le ${esc(dateFr(d.ajoute_le))}</span></span><button class="xbtn" data-suppr="${d.id}">Retirer</button></li>`).join("")
+      : `<li class="empty">Stock vide. Ajoute des liens ci-dessus.</li>`;
+    $("#a-liste-donnes").innerHTML = donnes.length
+      ? donnes.map(d => `<li><span><span class="u">${esc(d.lien)}</span><br><span class="meta">${esc(d.email || "client supprimé")} · ${esc(dateFr(d.donne_le))}</span></span></li>`).join("")
+      : `<li class="empty">Aucun lien vendu pour l'instant.</li>`;
+    document.querySelectorAll("[data-suppr]").forEach(b => b.onclick = async () => {
+      if (!confirm("Retirer ce lien du stock ?")) return;
+      try{ await api.adminSupprimer(Number(b.dataset.suppr)); remplirAdmin(); }
+      catch(err){ msg("#a-msg", traduire(err), "err"); }
+    });
+  }catch(err){ msg("#a-msg", "Impossible de charger le stock : " + traduire(err), "err"); }
+}
+
+$("#f-ajout").onsubmit = async (e) => {
+  e.preventDefault();
+  const liens = $("#a-liens").value.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+  if (!liens.length) return msg("#a-msg","Colle au moins un lien.","err");
+  const b = $("#b-ajout"); charge(b,true);
+  try{
+    const n = await api.adminAjouter(liens);
+    charge(b,false); $("#a-liens").value = "";
+    const ignores = liens.length - n;
+    msg("#a-msg", `${n} lien${n>1?"s":""} ajouté${n>1?"s":""} au stock.` + (ignores > 0 ? ` (${ignores} en double, ignoré${ignores>1?"s":""})` : ""), "ok");
+    remplirAdmin();
+  }catch(err){ charge(b,false); msg("#a-msg", traduire(err), "err"); }
+};
+
+$("#b-out").onclick = async () => { await api.deconnexion(); location.hash = ""; afficher(); };
+afficher();
+</script>
+</body>
+</html>
