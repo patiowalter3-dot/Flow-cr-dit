@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vDUmQB2elhT2WlU/vZCEbCvW5jHdzoFEjF+eZBIQQuE=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://skxyhfutydjtrndasado.supabase.co wss://skxyhfutydjtrndasado.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-+XJrYsnrAAKxKeOzyeHx7TF0enoLZQLod3jCJ2mMaus=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://skxyhfutydjtrndasado.supabase.co wss://skxyhfutydjtrndasado.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="index, follow">
 <title>Flow Crédits</title>
@@ -213,7 +213,8 @@ textarea:focus{border-color:var(--brand)}
         <span class="pill">⚡ Livraison instantanée</span>
         <h1 data-cfg-html="titre"></h1>
         <p class="lead" data-cfg="slogan"></p>
-        <a href="#inscription" class="btn btn-main">Obtenir mon lien</a>
+        <a href="#" data-acheter class="btn btn-main">Acheter — <span data-cfg="prix"></span></a>
+        <p class="small" style="margin:12px 0 0">Déjà payé ? <a href="#compte" style="color:var(--brand);font-weight:600">Entre ton code ici</a></p>
         <div><span class="stock-badge hidden" id="stock-badge"><span class="dot"></span><span id="stock-txt"></span></span></div>
         <div class="trust"><span>Paiement Mobile Money</span><span>Lien reçu en quelques secondes</span><span>Depuis ton téléphone</span></div>
       </div>
@@ -222,8 +223,24 @@ textarea:focus{border-color:var(--brand)}
         <div class="price" data-cfg="prix"></div>
         <div class="small">par lien · paiement unique</div>
         <ul id="avantages"></ul>
-        <a href="#inscription" class="btn btn-main btn-wide">J'achète maintenant</a>
+        <a href="#" data-acheter class="btn btn-main btn-wide">J'achète maintenant</a>
       </div>
+    </div>
+  </section>
+
+  <section class="block" id="contenu">
+    <div class="wrap">
+      <h2>Ce que contient Google AI Pro</h2>
+      <p class="intro">Tout l'écosystème IA de Google avec un seul lien d'activation.</p>
+      <div class="grid">
+        <div class="card feature"><div class="ico">🎬</div><h3>Google Flow : vidéos IA</h3><p>1 000 crédits Flow par mois pour créer des vidéos, des films et des scènes à partir d'un simple texte ou d'une image.</p></div>
+        <div class="card feature"><div class="ico">✨</div><h3>Gemini avancé</h3><p>Accès étendu aux modèles Gemini les plus performants de Google, avec une très grande mémoire de conversation.</p></div>
+        <div class="card feature"><div class="ico">🔎</div><h3>Deep Research</h3><p>Des rapports de recherche détaillés, préparés automatiquement à partir du web.</p></div>
+        <div class="card feature"><div class="ico">🖼️</div><h3>Images et musique IA</h3><p>Crée et retouche des images, et compose des musiques avec l'IA de Google.</p></div>
+        <div class="card feature"><div class="ico">☁️</div><h3>5 To de stockage</h3><p>Un énorme espace pour Gmail, Google Drive et Google Photos, partageable avec jusqu'à 5 personnes de ta famille.</p></div>
+        <div class="card feature"><div class="ico">📝</div><h3>Gemini dans tes outils</h3><p>L'IA directement dans Gmail, Docs et Sheets, plus des limites élargies pour coder avec AI Studio et Jules.</p></div>
+      </div>
+      <p class="small" style="margin:18px 0 0">Contenu de l'offre Google AI Pro selon Google ; certaines fonctions peuvent dépendre de ton pays. Flow Crédits est un service indépendant, non affilié à Google.</p>
     </div>
   </section>
 
@@ -232,8 +249,8 @@ textarea:focus{border-color:var(--brand)}
       <h2>Ton lien en 3 étapes</h2>
       <p class="intro">Tout se fait depuis ton téléphone.</p>
       <div class="steps">
+        <div class="card step"><h3>Paie par Mobile Money</h3><p>Appuie sur « Acheter ». Paiement sécurisé, tu reçois un code juste après.</p></div>
         <div class="card step"><h3>Crée ton compte</h3><p>Ton email et un mot de passe, c'est tout.</p></div>
-        <div class="card step"><h3>Paie par Mobile Money</h3><p>Paiement sécurisé. Tu reçois un code juste après.</p></div>
         <div class="card step"><h3>Colle ton code</h3><p>Ton lien s'affiche tout de suite dans ton compte.</p></div>
       </div>
     </div>
@@ -253,7 +270,7 @@ textarea:focus{border-color:var(--brand)}
     <div class="cta">
       <h2>Prêt ?</h2>
       <p>Crée ton compte, paie et reçois ton lien Google Flow tout de suite.</p>
-      <a href="#inscription" class="btn"><span>Obtenir mon lien — <span data-cfg="prix"></span></span></a>
+      <a href="#" data-acheter class="btn"><span>Acheter — <span data-cfg="prix"></span></span></a>
     </div>
   </div>
 </main>
@@ -367,13 +384,13 @@ textarea:focus{border-color:var(--brand)}
    ===================================================================== */
 const CONFIG = {
   nomSite: "Flow Crédits",
-  titre: "Tes liens <em>Google Flow</em>, livrés en quelques secondes",
-  slogan: "Paie 2 500 FCFA par Mobile Money et reçois ton lien Google Flow directement dans ton compte. Simple, rapide, sécurisé.",
-  nomProduit: "Lien Google Flow",
+  titre: "Ton accès <em>Google AI Pro</em>, livré en quelques secondes",
+  slogan: "Gemini avancé, Google Flow pour créer des vidéos IA, 5 To de stockage… Paie 2 500 FCFA par Mobile Money et reçois ton lien d'activation directement dans ton compte.",
+  nomProduit: "Lien Google AI Pro",
   prix: "2 500 FCFA",
-  avantages: ["Un lien personnel, rien que pour toi", "Livraison immédiate après paiement", "Tous tes liens gardés dans ton compte", "Aide par WhatsApp"],
+  avantages: ["5 To de stockage (Gmail, Drive, Photos)", "1 000 crédits Google Flow par mois", "Les modèles Gemini les plus avancés", "Partage avec jusqu'à 5 personnes", "Livraison immédiate, aide par WhatsApp"],
   // Lien de ton produit "Licence" sur Chariow (bouton Payer)
-  lienAchatChariow: "https://africaservice.mychariow.shop/prd_6u1nl7tb",
+  lienAchatChariow: "https://africaservice.mychariow.shop/prd_6u1nl7tb/checkout",
   // Ton numéro WhatsApp avec l'indicatif, sans + ni espaces
   whatsapp: "237652817569",
   // Infos Supabase (Project Settings > API). Laisse vide = mode démonstration
@@ -404,6 +421,7 @@ document.title = CONFIG.nomSite;
 $("#annee").textContent = new Date().getFullYear();
 $("#wa").href = "https://wa.me/" + CONFIG.whatsapp;
 $("#b-acheter").href = CONFIG.lienAchatChariow;
+document.querySelectorAll("[data-acheter]").forEach(a => { a.href = CONFIG.lienAchatChariow; a.rel = "noopener"; });
 if (DEMO) $("#demo").classList.remove("hidden");
 
 /* ---------- Mode démonstration (rien n'est enregistré) ---------- */
