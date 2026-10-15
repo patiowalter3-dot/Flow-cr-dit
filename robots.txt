@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /index-3.html
+
+Sitemap: https://patiowalter3-dot.github.io/Flow-cr-dit/sitemap.xml

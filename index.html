@@ -3,11 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-nLlBot56R/DmOiC5z6VV+W9OHl2ZFQpakL/Pe91NBOg=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://skxyhfutydjtrndasado.supabase.co wss://skxyhfutydjtrndasado.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-D22snqX3iFXWL+wewHEKecK5tN1x856VxZACsAlgK/0=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://skxyhfutydjtrndasado.supabase.co wss://skxyhfutydjtrndasado.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="index, follow">
-<title>Flow Crédits</title>
-<meta name="description" content="Liens Google Flow à 2 500 FCFA. Paiement Mobile Money, livraison instantanée.">
+<title>Flow Crédits · Accès Google AI Pro par Mobile Money</title>
+<meta name="description" content="Achète ton accès Google AI Pro (Gemini avancé, Google Flow, 5 To de stockage) à 2 500 FCFA par Mobile Money. Livraison immédiate dans ton compte.">
+<link rel="canonical" href="https://patiowalter3-dot.github.io/Flow-cr-dit/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Flow Crédits">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Flow Crédits · Ton accès Google AI Pro en quelques secondes">
+<meta property="og:description" content="Gemini avancé, Google Flow, 5 To de stockage. 2 500 FCFA par Mobile Money, livraison immédiate.">
+<meta property="og:url" content="https://patiowalter3-dot.github.io/Flow-cr-dit/">
+<meta property="og:image" content="https://patiowalter3-dot.github.io/Flow-cr-dit/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Flow Crédits : accès Google AI Pro à 2 500 FCFA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Flow Crédits · Ton accès Google AI Pro en quelques secondes">
+<meta name="twitter:description" content="2 500 FCFA par Mobile Money, livraison immédiate.">
+<meta name="twitter:image" content="https://patiowalter3-dot.github.io/Flow-cr-dit/og.jpg">
 <meta name="theme-color" content="#0f766e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -211,6 +228,17 @@ textarea:focus{border-color:var(--brand)}
 .manque{background:var(--accent-soft);border:1.5px solid var(--accent);border-radius:12px;padding:12px 14px;font-size:15px;margin-bottom:12px}
 .code-box summary{font-weight:600;cursor:pointer}
 .history .moins{color:var(--danger);font-weight:600;white-space:nowrap}
+.piege{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.footlinks a{color:inherit}
+.cookies{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:560px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px 16px;display:flex;gap:12px;align-items:center}
+.cookies p{margin:0;font-size:14px;color:var(--muted)}
+.cookies a{color:var(--brand)}
+.cookies .btn{padding:10px 16px;font-size:14px;white-space:nowrap}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.kpis div{background:var(--surface-2);border-radius:12px;padding:12px 14px}
+.kpis b{display:block;font:800 24px/1.1 "Bricolage Grotesque",sans-serif}
+.kpis span{font-size:13px;color:var(--muted)}
+@media (min-width:760px){.kpis{grid-template-columns:repeat(3,1fr)}}
 .admin-flag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
 </style>
 </head>
@@ -307,6 +335,8 @@ textarea:focus{border-color:var(--brand)}
       <form id="f-auth" novalidate>
         <div class="field"><label for="email">Email</label><input id="email" type="email" maxlength="254" autocomplete="email" placeholder="toi@exemple.com" required></div>
         <div class="field"><label for="pw">Mot de passe</label><input id="pw" type="password" autocomplete="current-password" placeholder="8 caractères minimum" minlength="8" maxlength="72" required></div>
+        <div class="piege" aria-hidden="true"><label for="site_web">Ne pas remplir</label><input id="site_web" tabindex="-1" autocomplete="off"></div>
+        <p class="small" id="accept-cgu" style="margin:0 0 14px">En créant un compte, tu acceptes les <a href="conditions.html" style="color:var(--brand)">conditions</a> et la <a href="confidentialite.html" style="color:var(--brand)">politique de confidentialité</a>.</p>
         <button class="btn btn-main btn-wide" id="b-auth" type="submit">Créer mon compte</button>
       </form>
       <p class="small" style="text-align:center;margin:16px 0 0"><button class="linkbtn" id="b-oubli" type="button">Mot de passe oublié ?</button></p>
@@ -412,6 +442,18 @@ textarea:focus{border-color:var(--brand)}
     </div>
 
     <div class="card panel full">
+      <h2>Statistiques</h2>
+      <div class="kpis">
+        <div><b id="k-vj">–</b><span>visites aujourd'hui</span></div>
+        <div><b id="k-v7">–</b><span>visites (7 jours)</span></div>
+        <div><b id="k-i7">–</b><span>inscrits (7 jours)</span></div>
+        <div><b id="k-r7">–</b><span>FCFA rechargés (7 j)</span></div>
+        <div><b id="k-rt">–</b><span>FCFA rechargés (total)</span></div>
+        <div><b id="k-s">–</b><span>FCFA en soldes clients</span></div>
+      </div>
+    </div>
+
+    <div class="card panel full">
       <h2>Ajouter des liens</h2>
       <p>Colle tes liens ici, <b>un par ligne</b>. Les doublons sont ignorés.</p>
       <div id="a-msg"></div>
@@ -439,9 +481,14 @@ textarea:focus{border-color:var(--brand)}
 <footer>
   <div class="wrap">
     <span>© <span id="annee"></span> <span data-cfg="nomSite"></span> · Service indépendant, non affilié à Google.</span>
-    <a id="wa" target="_blank" rel="noopener">Une question ? WhatsApp</a>
+    <span class="footlinks"><a href="conditions.html">Conditions</a> · <a href="confidentialite.html">Confidentialité</a> · <a id="wa" target="_blank" rel="noopener">WhatsApp</a></span>
   </div>
 </footer>
+
+<div id="info-cookies" class="cookies hidden" role="region" aria-label="Information sur le stockage">
+  <p>Ce site garde seulement ta connexion sur ton téléphone. Aucun cookie publicitaire. <a href="confidentialite.html">En savoir plus</a></p>
+  <button type="button" class="btn btn-main" id="b-cookies">J'ai compris</button>
+</div>
 
 <script>
 /* =====================================================================
@@ -482,7 +529,6 @@ function sur(url){ return /^https:\/\/[^\s"<>]+$/i.test(url) ? url : "#"; }
 document.querySelectorAll("[data-cfg]").forEach(el => el.textContent = CONFIG[el.dataset.cfg] || "");
 document.querySelectorAll("[data-cfg-html]").forEach(el => el.innerHTML = CONFIG[el.dataset.cfgHtml] || "");
 $("#avantages").innerHTML = CONFIG.avantages.map(a => `<li>${esc(a)}</li>`).join("");
-document.title = CONFIG.nomSite;
 $("#annee").textContent = new Date().getFullYear();
 $("#wa").href = "https://wa.me/" + CONFIG.whatsapp;
 document.querySelectorAll("[data-acheter]").forEach(a => { a.href = "#compte"; });
@@ -580,6 +626,10 @@ const api = {
       try { return await error.context.json(); } catch(_) { return { ok:false, erreur:"Connexion impossible. Vérifie ton internet." }; }
     }
     return data;
+  },
+  async adminStats(){
+    if (DEMO) return { visites_jour:3, visites_7j:20, inscrits_7j:2, recharges_7j:5000, recharges_tot:5000, soldes_clients:2500 };
+    const { data, error } = await sb.rpc("admin_stats"); if (error) throw error; return data || {};
   },
   async adminResume(){
     if (DEMO) return { disponibles:demo.stock.length, donnes:demo.donnes.length, clients:new Set(demo.donnes.map(d=>d.email)).size || 1 };
@@ -686,6 +736,7 @@ window.addEventListener("hashchange", afficher);
 function majOnglets(){
   document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === ongletAuth));
   $("#b-auth").textContent = ongletAuth === "inscription" ? "Créer mon compte" : "Me connecter";
+  $("#accept-cgu").classList.toggle("hidden", ongletAuth !== "inscription");
   $("#pw").autocomplete = ongletAuth === "inscription" ? "new-password" : "current-password";
   msg("#auth-msg","");
 }
@@ -693,6 +744,7 @@ document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { locat
 
 $("#f-auth").onsubmit = async (e) => {
   e.preventDefault();
+  if ($("#site_web").value) return; // robot détecté : on ignore sans rien dire
   const email = $("#email").value.trim(), pw = $("#pw").value;
   if (!email || !email.includes("@")) return msg("#auth-msg","Écris ton email.","err");
   if (pw.length < 8) return msg("#auth-msg","Le mot de passe doit faire au moins 8 caractères.","err");
@@ -861,6 +913,11 @@ async function remplirAdmin(){
     $("#a-dispo").textContent = res.disponibles;
     $("#a-donnes").textContent = res.donnes;
     $("#a-clients").textContent = res.clients;
+    api.adminStats().then(k => {
+      $("#k-vj").textContent = fcfa(k.visites_jour); $("#k-v7").textContent = fcfa(k.visites_7j);
+      $("#k-i7").textContent = fcfa(k.inscrits_7j); $("#k-r7").textContent = fcfa(k.recharges_7j);
+      $("#k-rt").textContent = fcfa(k.recharges_tot); $("#k-s").textContent = fcfa(k.soldes_clients);
+    }).catch(() => {});
     $("#a-liste-dispo").innerHTML = dispo.length
       ? dispo.map((d,i) => `<li><span><span class="u">${esc(d.lien)}</span><br><span class="meta">${i===0 ? "➜ Le prochain à partir · " : ""}ajouté le ${esc(dateFr(d.ajoute_le))}</span></span><button class="xbtn" data-suppr="${d.id}">Retirer</button></li>`).join("")
       : `<li class="empty">Stock vide. Ajoute des liens ci-dessus.</li>`;
@@ -891,6 +948,15 @@ $("#f-ajout").onsubmit = async (e) => {
 
 $("#b-out").onclick = async () => { await api.deconnexion(); location.hash = ""; afficher(); };
 document.addEventListener("visibilitychange", async () => { if (document.visibilityState === "visible" && location.hash === "#compte"){ const u = await api.session(); if (u) remplirCompte(u); } });
+(function(){
+  let deja = false;
+  try { deja = sessionStorage.getItem("fc_visite") === "1"; sessionStorage.setItem("fc_visite","1"); } catch(_) {}
+  if (!deja && sb) sb.rpc("noter_visite").then(() => {}, () => {});
+  let vu = false;
+  try { vu = localStorage.getItem("fc_info_stockage") === "1"; } catch(_) {}
+  if (!vu) $("#info-cookies").classList.remove("hidden");
+  $("#b-cookies").onclick = () => { $("#info-cookies").classList.add("hidden"); try { localStorage.setItem("fc_info_stockage","1"); } catch(_) {} };
+})();
 afficher();
 </script>
 </body>
